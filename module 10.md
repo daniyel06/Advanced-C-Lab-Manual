@@ -10,11 +10,45 @@ Algorithm:
  
 Program:
 
-//type your code here
+~~~
+struct Node{
+    int data; 
+    struct Node *next;
+}*head;
+
+void search(int data)
+{
+ 
+ struct Node*temp=head;
+ int flag=0;
+ int i=0;
+ while(temp->data!=data)
+ {
+     i++;
+     if(temp->next!=NULL)
+     temp=temp->next;
+     else break;
+     
+ }
+ if(temp->data==data)
+ {
+     printf("item %d found at location %d",data,i+1);
+     flag=1;
+ }
+ if(flag==0)
+ {
+     printf("Item not found");
+ }
+ 
+    
+}
+
+~~~
 
 Output:
 
-//paste your output here
+
+![437709570-f7550e96-8620-4edd-830c-e0d8980901c7](https://github.com/user-attachments/assets/b2a1e37b-399e-4a08-90dc-c8cb256fbcb5)
 
 
 
@@ -33,12 +67,37 @@ Algorithm:
 4.	Call the insert function and perform other linked list operations as needed.
  
 Program:
+~~~
+struct Node{
+    int data; 
+    struct Node *next;
+}*head;
 
-//type your code here
+
+void insert(int data)
+{
+    struct Node* n=(struct Node*)malloc(sizeof(struct Node));
+    struct Node* temp=head;
+    n->data=data;
+    n->next=NULL;
+    if(head==NULL){
+        
+        head=n;
+    }else{
+        while(temp->next!=NULL){
+            temp=temp->next;
+        }
+        temp->next=n;
+        
+    }
+}
+
+~~~
 
 Output:
 
-//paste your output here
+![437709642-927a06eb-7f98-4d8a-b790-7460787b7edb](https://github.com/user-attachments/assets/112ee17f-cc14-4093-81cb-844afcefa267)
+
 
  
 Result:
@@ -58,11 +117,31 @@ Algorithm:
  
 Program:
 
-//type your code here
+~~~
+struct Node
+{
+    struct Node *prev;
+    struct Node *next;
+    int data;
+}*head;
+
+void display()
+{
+    struct Node* temp=head;
+    while(temp!=NULL)
+    {
+        printf("%d\n",temp->data);
+        temp=temp->next;
+    }
+    
+}
+
+~~~
 
 Output:
+![437709772-266f7949-0aab-4e0a-bde3-4b9ce83cb3f3](https://github.com/user-attachments/assets/3d248bd3-f4d0-41b2-b6e0-68b024ab074f)
 
-//paste your output here
+
 
 
 Result:
@@ -82,12 +161,38 @@ Algorithm:
 5.	Set the new node's prev pointer to the last node and update the last node's next pointer to the new node.
  
 Program:
+~~~
+struct Node
+{
+    struct Node *prev;
+    struct Node *next;
+    float data;
+}*head;
 
-//type your code here
+void insert(float data)
+{
+    struct Node* n=(struct Node*)malloc(sizeof(struct Node));
+    struct Node* temp=head;
+    n->data=data;
+    n->next=NULL;
+    if(head==NULL){
+        head=n;
+        return;
+    }
+    while(temp->next!=NULL){
+        temp=temp->next;
+    }
+    temp->next=n;
+    
+    
+}
+
+
+~~~
 
 Output:
 
-//paste your output here
+![437709861-8914ba36-52fd-48a5-adf1-816f0721282e](https://github.com/user-attachments/assets/fa66db89-a305-4e4e-a92a-cd6e0c51a7c0)
 
 
 Result:
@@ -124,21 +229,88 @@ o	If the element is not found in any node, print a message indicating the elemen
 
 
 Program:
+~~~
 
-//type your code here
+struct Node
+{
+    int data; 
+    struct Node *next;
+}*head;
+void display()
+{
+    struct Node* temp=head;
+    while(temp!=NULL)
+    {
+        printf("%d ",temp->data);
+        temp=temp->next;
+    }
+}
+void insert(int data)
+{
+    struct Node* temp=head;
+    struct Node* ptr=(struct Node*)malloc(sizeof(struct Node));
+    ptr->data=data;
+    ptr->next=NULL;
+    if(head==NULL)
+    {
+        head=ptr;
+    }else
+    {
+        while(temp->next!=NULL)        {
+            temp=temp->next;
+        }
+        temp->next=ptr;
+    }
+}
+void search(int data)
+{
+    int i=1;
+    struct Node* temp=head;
+    if(head==NULL)
+    {
+        printf("Elements not found");
+    }else
+    {
+        while(temp!=NULL)
+        {
+            
+            if(temp->data==data)
+            {
+                printf("item %d found at location %d\n",data,i);
+                return;
+            }
+            i++;
+            temp=temp->next;
+        }
+        printf("Item not found\n");
+    }
+}
+void delete()
+{
+    struct Node* temp=head;
+    if(head==NULL)
+    {
+        printf("UNDERFLOW");
+    }else
+    {
+        head=head->next;
+        free(temp);
+        printf("Node deleted\n");
+    }
+    
+}
+
+
+~~~
 
 Output:
 
-//paste your output here
 
+
+![437710019-b87d5fe4-0a38-46a9-ad2e-e4d15de9af47](https://github.com/user-attachments/assets/67bfd427-9494-4681-85a7-ddd606f61418)
 
 
 
 
 Result:
 Thus, the function that deletes a given element from a linked list is verified successfully.
-
-
-
-
-
